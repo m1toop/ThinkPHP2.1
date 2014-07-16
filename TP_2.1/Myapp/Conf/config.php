@@ -7,11 +7,11 @@ return array(
 
 	'DB_HOST'=> 'localhost',
 
-	'DB_NAME'=>'com_hmly',  
+	'DB_NAME'=>'',  
 
 	'DB_USER'=>'root', 
 
-	'DB_PWD'=>'tarena', 
+	'DB_PWD'=>'', 
 
 	'DB_PORT'=>'3306',
 
