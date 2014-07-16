@@ -17,7 +17,7 @@
  */
 // 记录和统计时间（微秒）
 function G($start,$end='',$dec=3) {
-    static $_info = array();
+    static $_info = array();//静态变量的作用
     if(!empty($end)) { // 统计时间
         if(!isset($_info[$end])) {
             $_info[$end]   =  microtime(TRUE);
@@ -32,11 +32,13 @@ function G($start,$end='',$dec=3) {
 G('beginTime');
 if(!defined('APP_PATH')) define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']));
 if(!defined('RUNTIME_PATH')) define('RUNTIME_PATH',APP_PATH.'/Runtime/');
+
 if(!defined('APP_CACHE_NAME')) define('APP_CACHE_NAME','app');// 指定缓存名称
+
 if(defined('RUNTIME_ALLINONE') && is_file(RUNTIME_PATH.'~allinone.php')) {
+    die("not here");
     // ALLINONE 模式直接载入allinone缓存
     $result   =  require RUNTIME_PATH.'~allinone.php';
-    echo 11111;exit;
     C($result);
     // 自动设置为运行模式
     define('RUNTIME_MODEL',true);
@@ -47,9 +49,11 @@ if(defined('RUNTIME_ALLINONE') && is_file(RUNTIME_PATH.'~allinone.php')) {
     if(!defined('APP_NAME')) define('APP_NAME', basename(dirname($_SERVER['SCRIPT_FILENAME'])));
     $runtime = defined('THINK_MODE')?'~'.strtolower(THINK_MODE).'_runtime.php':'~runtime.php';
     if(is_file(RUNTIME_PATH.$runtime)) {
+         //有了~runtime.php之后>>
          // 加载框架核心编译缓存
         require RUNTIME_PATH.$runtime;
     }else{
+        //第一次或者~runtime.php被清理后>>>>
         // 加载编译函数文件
         require THINK_PATH."/Common/runtime.php";
         // 生成核心编译~runtime缓存

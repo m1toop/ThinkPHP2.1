@@ -458,7 +458,7 @@ function alias_import($alias, $classfile='') {
     if (is_string($alias)) {
         if (isset($_alias[$alias]))
             return require_cache($_alias[$alias]);
-    }elseif (is_array($alias)) {
+    }elseif (is_array($alias)) {//定义别名
         foreach ($alias as $key => $val)
             $_alias[$key] = $val;
         return;

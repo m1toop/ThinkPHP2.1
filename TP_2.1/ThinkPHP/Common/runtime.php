@@ -37,7 +37,7 @@ function build_runtime() {
         // 根据设置的运行模式加载不同的核心编译文件
         $list   =  include THINK_PATH.'/Mode/'.strtolower(THINK_MODE).'.php';
     }else{
-        // 默认核心
+        // 默认核心//加载默认核心
         $list = include THINK_PATH.'/Common/core.php';
     }
      // 加载兼容函数
@@ -45,7 +45,7 @@ function build_runtime() {
         $list[]	= THINK_PATH.'/Common/compat.php';
     // 加载核心编译文件列表
     foreach ($list as $key=>$file){
-        if(is_file($file))  require $file;
+        if(is_file($file))  require $file;//加载核心文件
     }
     // 检查项目目录结构 如果不存在则自动创建
     if(!is_dir(RUNTIME_PATH)) {

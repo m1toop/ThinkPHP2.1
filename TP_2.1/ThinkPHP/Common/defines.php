@@ -52,6 +52,9 @@ if(!IS_CLI) {
         }
         define('__ROOT__',   (($_root=='/' || $_root=='\\')?'':$_root));
     }
+    // echo __ROOT__;
+    // echo "<br />";
+    // echo _PHP_FILE_;
 
     //支持的URL模式
     define('URL_COMMON',      0);   //普通模式
